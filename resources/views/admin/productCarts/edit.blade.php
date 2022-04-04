@@ -18,7 +18,9 @@
                     @endforeach
                 </select>
                 @if($errors->has('product'))
-                    <span class="text-danger">{{ $errors->first('product') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('product') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.productCart.fields.product_helper') }}</span>
             </div>
@@ -26,7 +28,9 @@
                 <label class="required" for="name">{{ trans('cruds.productCart.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $productCart->name) }}" required>
                 @if($errors->has('name'))
-                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('name') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.productCart.fields.name_helper') }}</span>
             </div>
@@ -34,7 +38,9 @@
                 <label class="required" for="email">{{ trans('cruds.productCart.fields.email') }}</label>
                 <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email', $productCart->email) }}" required>
                 @if($errors->has('email'))
-                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('email') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.productCart.fields.email_helper') }}</span>
             </div>
@@ -42,7 +48,9 @@
                 <label class="required" for="phone">{{ trans('cruds.productCart.fields.phone') }}</label>
                 <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $productCart->phone) }}" required>
                 @if($errors->has('phone'))
-                    <span class="text-danger">{{ $errors->first('phone') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('phone') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.productCart.fields.phone_helper') }}</span>
             </div>
@@ -54,7 +62,9 @@
                     @endforeach
                 </select>
                 @if($errors->has('city'))
-                    <span class="text-danger">{{ $errors->first('city') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('city') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.productCart.fields.city_helper') }}</span>
             </div>
@@ -62,7 +72,9 @@
                 <label class="required" for="address">{{ trans('cruds.productCart.fields.address') }}</label>
                 <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address', $productCart->address) }}" required>
                 @if($errors->has('address'))
-                    <span class="text-danger">{{ $errors->first('address') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('address') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.productCart.fields.address_helper') }}</span>
             </div>
@@ -70,7 +82,9 @@
                 <label class="required" for="extra_info">{{ trans('cruds.productCart.fields.extra_info') }}</label>
                 <textarea class="form-control {{ $errors->has('extra_info') ? 'is-invalid' : '' }}" name="extra_info" id="extra_info" required>{{ old('extra_info', $productCart->extra_info) }}</textarea>
                 @if($errors->has('extra_info'))
-                    <span class="text-danger">{{ $errors->first('extra_info') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('extra_info') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.productCart.fields.extra_info_helper') }}</span>
             </div>

@@ -1,102 +1,102 @@
-<div class="m-3">
-    @can('our_service_create')
-        <div style="margin-bottom: 10px;" class="row">
-            <div class="col-lg-12">
-                <a class="btn btn-success" href="{{ route('admin.our-services.create') }}">
-                    {{ trans('global.add') }} {{ trans('cruds.ourService.title_singular') }}
-                </a>
-            </div>
+@can('our_service_create')
+    <div style="margin-bottom: 10px;" class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-success" href="{{ route('admin.our-services.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.ourService.title_singular') }}
+            </a>
         </div>
-    @endcan
-    <div class="card">
-        <div class="card-header">
-            {{ trans('cruds.ourService.title_singular') }} {{ trans('global.list') }}
-        </div>
+    </div>
+@endcan
 
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class=" table table-bordered table-striped table-hover datatable datatable-typeOurServices">
-                    <thead>
-                        <tr>
-                            <th width="10">
+<div class="card">
+    <div class="card-header">
+        {{ trans('cruds.ourService.title_singular') }} {{ trans('global.list') }}
+    </div>
 
-                            </th>
-                            <th>
-                                {{ trans('cruds.ourService.fields.id') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.ourService.fields.name') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.ourService.fields.type') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.ourService.fields.description') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.ourService.fields.icon') }}
-                            </th>
-                            <th>
-                                &nbsp;
-                            </th>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-typeOurServices">
+                <thead>
+                    <tr>
+                        <th width="10">
+
+                        </th>
+                        <th>
+                            {{ trans('cruds.ourService.fields.id') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.ourService.fields.name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.ourService.fields.type') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.ourService.fields.description') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.ourService.fields.icon') }}
+                        </th>
+                        <th>
+                            &nbsp;
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($ourServices as $key => $ourService)
+                        <tr data-entry-id="{{ $ourService->id }}">
+                            <td>
+
+                            </td>
+                            <td>
+                                {{ $ourService->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $ourService->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $ourService->type->type ?? '' }}
+                            </td>
+                            <td>
+                                {{ $ourService->description ?? '' }}
+                            </td>
+                            <td>
+                                @if($ourService->icon)
+                                    <a href="{{ $ourService->icon->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $ourService->icon->getUrl('thumb') }}">
+                                    </a>
+                                @endif
+                            </td>
+                            <td>
+                                @can('our_service_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.our-services.show', $ourService->id) }}">
+                                        {{ trans('global.view') }}
+                                    </a>
+                                @endcan
+
+                                @can('our_service_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.our-services.edit', $ourService->id) }}">
+                                        {{ trans('global.edit') }}
+                                    </a>
+                                @endcan
+
+                                @can('our_service_delete')
+                                    <form action="{{ route('admin.our-services.destroy', $ourService->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                    </form>
+                                @endcan
+
+                            </td>
+
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($ourServices as $key => $ourService)
-                            <tr data-entry-id="{{ $ourService->id }}">
-                                <td>
-
-                                </td>
-                                <td>
-                                    {{ $ourService->id ?? '' }}
-                                </td>
-                                <td>
-                                    {{ $ourService->name ?? '' }}
-                                </td>
-                                <td>
-                                    {{ $ourService->type->type ?? '' }}
-                                </td>
-                                <td>
-                                    {{ $ourService->description ?? '' }}
-                                </td>
-                                <td>
-                                    @if($ourService->icon)
-                                        <a href="{{ $ourService->icon->getUrl() }}" target="_blank" style="display: inline-block">
-                                            <img src="{{ $ourService->icon->getUrl('thumb') }}">
-                                        </a>
-                                    @endif
-                                </td>
-                                <td>
-                                    @can('our_service_show')
-                                        <a class="btn btn-xs btn-primary" href="{{ route('admin.our-services.show', $ourService->id) }}">
-                                            {{ trans('global.view') }}
-                                        </a>
-                                    @endcan
-
-                                    @can('our_service_edit')
-                                        <a class="btn btn-xs btn-info" href="{{ route('admin.our-services.edit', $ourService->id) }}">
-                                            {{ trans('global.edit') }}
-                                        </a>
-                                    @endcan
-
-                                    @can('our_service_delete')
-                                        <form action="{{ route('admin.our-services.destroy', $ourService->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                        </form>
-                                    @endcan
-
-                                </td>
-
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
+
 @section('scripts')
 @parent
 <script>

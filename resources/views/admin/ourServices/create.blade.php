@@ -13,7 +13,9 @@
                 <label class="required" for="name">{{ trans('cruds.ourService.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                 @if($errors->has('name'))
-                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('name') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.ourService.fields.name_helper') }}</span>
             </div>
@@ -25,7 +27,9 @@
                     @endforeach
                 </select>
                 @if($errors->has('type'))
-                    <span class="text-danger">{{ $errors->first('type') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('type') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.ourService.fields.type_helper') }}</span>
             </div>
@@ -33,7 +37,9 @@
                 <label class="required" for="description">{{ trans('cruds.ourService.fields.description') }}</label>
                 <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description" required>{{ old('description') }}</textarea>
                 @if($errors->has('description'))
-                    <span class="text-danger">{{ $errors->first('description') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('description') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.ourService.fields.description_helper') }}</span>
             </div>
@@ -42,7 +48,9 @@
                 <div class="needsclick dropzone {{ $errors->has('icon') ? 'is-invalid' : '' }}" id="icon-dropzone">
                 </div>
                 @if($errors->has('icon'))
-                    <span class="text-danger">{{ $errors->first('icon') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('icon') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.ourService.fields.icon_helper') }}</span>
             </div>

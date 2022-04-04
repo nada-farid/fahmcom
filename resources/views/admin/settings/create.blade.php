@@ -13,7 +13,9 @@
                 <label class="required" for="email">{{ trans('cruds.setting.fields.email') }}</label>
                 <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email') }}" required>
                 @if($errors->has('email'))
-                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('email') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.email_helper') }}</span>
             </div>
@@ -21,7 +23,9 @@
                 <label class="required" for="phone">{{ trans('cruds.setting.fields.phone') }}</label>
                 <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', '') }}" required>
                 @if($errors->has('phone'))
-                    <span class="text-danger">{{ $errors->first('phone') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('phone') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.phone_helper') }}</span>
             </div>
@@ -29,7 +33,9 @@
                 <label class="required" for="about_us">{{ trans('cruds.setting.fields.about_us') }}</label>
                 <textarea class="form-control {{ $errors->has('about_us') ? 'is-invalid' : '' }}" name="about_us" id="about_us" required>{{ old('about_us') }}</textarea>
                 @if($errors->has('about_us'))
-                    <span class="text-danger">{{ $errors->first('about_us') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('about_us') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.about_us_helper') }}</span>
             </div>
@@ -37,7 +43,9 @@
                 <label class="required" for="description">{{ trans('cruds.setting.fields.description') }}</label>
                 <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description" required>{{ old('description') }}</textarea>
                 @if($errors->has('description'))
-                    <span class="text-danger">{{ $errors->first('description') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('description') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.description_helper') }}</span>
             </div>
@@ -45,7 +53,9 @@
                 <label for="product">{{ trans('cruds.setting.fields.product') }}</label>
                 <input class="form-control {{ $errors->has('product') ? 'is-invalid' : '' }}" type="number" name="product" id="product" value="{{ old('product', '') }}" step="1">
                 @if($errors->has('product'))
-                    <span class="text-danger">{{ $errors->first('product') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('product') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.product_helper') }}</span>
             </div>
@@ -53,7 +63,9 @@
                 <label for="snapchat">{{ trans('cruds.setting.fields.snapchat') }}</label>
                 <input class="form-control {{ $errors->has('snapchat') ? 'is-invalid' : '' }}" type="text" name="snapchat" id="snapchat" value="{{ old('snapchat', '') }}">
                 @if($errors->has('snapchat'))
-                    <span class="text-danger">{{ $errors->first('snapchat') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('snapchat') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.snapchat_helper') }}</span>
             </div>
@@ -61,7 +73,9 @@
                 <label class="required" for="supportive_partner">{{ trans('cruds.setting.fields.supportive_partner') }}</label>
                 <input class="form-control {{ $errors->has('supportive_partner') ? 'is-invalid' : '' }}" type="number" name="supportive_partner" id="supportive_partner" value="{{ old('supportive_partner', '') }}" step="1" required>
                 @if($errors->has('supportive_partner'))
-                    <span class="text-danger">{{ $errors->first('supportive_partner') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('supportive_partner') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.supportive_partner_helper') }}</span>
             </div>
@@ -69,7 +83,9 @@
                 <label class="required" for="service">{{ trans('cruds.setting.fields.service') }}</label>
                 <input class="form-control {{ $errors->has('service') ? 'is-invalid' : '' }}" type="number" name="service" id="service" value="{{ old('service', '') }}" step="1" required>
                 @if($errors->has('service'))
-                    <span class="text-danger">{{ $errors->first('service') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('service') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.service_helper') }}</span>
             </div>
@@ -77,7 +93,9 @@
                 <label class="required" for="experience_year">{{ trans('cruds.setting.fields.experience_year') }}</label>
                 <input class="form-control {{ $errors->has('experience_year') ? 'is-invalid' : '' }}" type="number" name="experience_year" id="experience_year" value="{{ old('experience_year', '') }}" step="1" required>
                 @if($errors->has('experience_year'))
-                    <span class="text-danger">{{ $errors->first('experience_year') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('experience_year') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.experience_year_helper') }}</span>
             </div>
@@ -85,7 +103,9 @@
                 <label class="required" for="contact_text">{{ trans('cruds.setting.fields.contact_text') }}</label>
                 <textarea class="form-control {{ $errors->has('contact_text') ? 'is-invalid' : '' }}" name="contact_text" id="contact_text" required>{{ old('contact_text') }}</textarea>
                 @if($errors->has('contact_text'))
-                    <span class="text-danger">{{ $errors->first('contact_text') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('contact_text') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.contact_text_helper') }}</span>
             </div>
@@ -93,7 +113,9 @@
                 <label class="required" for="service_text">{{ trans('cruds.setting.fields.service_text') }}</label>
                 <textarea class="form-control {{ $errors->has('service_text') ? 'is-invalid' : '' }}" name="service_text" id="service_text" required>{{ old('service_text') }}</textarea>
                 @if($errors->has('service_text'))
-                    <span class="text-danger">{{ $errors->first('service_text') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('service_text') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.service_text_helper') }}</span>
             </div>
@@ -101,7 +123,9 @@
                 <label for="twitter">{{ trans('cruds.setting.fields.twitter') }}</label>
                 <input class="form-control {{ $errors->has('twitter') ? 'is-invalid' : '' }}" type="text" name="twitter" id="twitter" value="{{ old('twitter', '') }}">
                 @if($errors->has('twitter'))
-                    <span class="text-danger">{{ $errors->first('twitter') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('twitter') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.twitter_helper') }}</span>
             </div>
@@ -109,7 +133,9 @@
                 <label for="instagram">{{ trans('cruds.setting.fields.instagram') }}</label>
                 <input class="form-control {{ $errors->has('instagram') ? 'is-invalid' : '' }}" type="text" name="instagram" id="instagram" value="{{ old('instagram', '') }}">
                 @if($errors->has('instagram'))
-                    <span class="text-danger">{{ $errors->first('instagram') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('instagram') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.instagram_helper') }}</span>
             </div>
@@ -117,7 +143,9 @@
                 <label for="youtube">{{ trans('cruds.setting.fields.youtube') }}</label>
                 <input class="form-control {{ $errors->has('youtube') ? 'is-invalid' : '' }}" type="text" name="youtube" id="youtube" value="{{ old('youtube', '') }}">
                 @if($errors->has('youtube'))
-                    <span class="text-danger">{{ $errors->first('youtube') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('youtube') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.youtube_helper') }}</span>
             </div>
@@ -125,7 +153,9 @@
                 <label for="whatsapp">{{ trans('cruds.setting.fields.whatsapp') }}</label>
                 <input class="form-control {{ $errors->has('whatsapp') ? 'is-invalid' : '' }}" type="text" name="whatsapp" id="whatsapp" value="{{ old('whatsapp', '') }}">
                 @if($errors->has('whatsapp'))
-                    <span class="text-danger">{{ $errors->first('whatsapp') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('whatsapp') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.whatsapp_helper') }}</span>
             </div>
@@ -133,7 +163,9 @@
                 <label for="facebook">{{ trans('cruds.setting.fields.facebook') }}</label>
                 <input class="form-control {{ $errors->has('facebook') ? 'is-invalid' : '' }}" type="text" name="facebook" id="facebook" value="{{ old('facebook', '') }}">
                 @if($errors->has('facebook'))
-                    <span class="text-danger">{{ $errors->first('facebook') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('facebook') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.facebook_helper') }}</span>
             </div>
@@ -141,7 +173,9 @@
                 <label class="required" for="website">{{ trans('cruds.setting.fields.website') }}</label>
                 <input class="form-control {{ $errors->has('website') ? 'is-invalid' : '' }}" type="text" name="website" id="website" value="{{ old('website', '') }}" required>
                 @if($errors->has('website'))
-                    <span class="text-danger">{{ $errors->first('website') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('website') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.website_helper') }}</span>
             </div>
@@ -150,7 +184,9 @@
                 <div class="needsclick dropzone {{ $errors->has('order_way') ? 'is-invalid' : '' }}" id="order_way-dropzone">
                 </div>
                 @if($errors->has('order_way'))
-                    <span class="text-danger">{{ $errors->first('order_way') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('order_way') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.order_way_helper') }}</span>
             </div>
@@ -159,7 +195,9 @@
                 <div class="needsclick dropzone {{ $errors->has('footer_image') ? 'is-invalid' : '' }}" id="footer_image-dropzone">
                 </div>
                 @if($errors->has('footer_image'))
-                    <span class="text-danger">{{ $errors->first('footer_image') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('footer_image') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.footer_image_helper') }}</span>
             </div>
@@ -168,7 +206,9 @@
                 <div class="needsclick dropzone {{ $errors->has('about_image') ? 'is-invalid' : '' }}" id="about_image-dropzone">
                 </div>
                 @if($errors->has('about_image'))
-                    <span class="text-danger">{{ $errors->first('about_image') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('about_image') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.about_image_helper') }}</span>
             </div>
