@@ -17,32 +17,22 @@
 
                     <div class="row">
                         <div class="{{ $settings1['column_class'] }}">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-red" style="display:flex; flex-direction: column; justify-content: center;">
-                                    <i class="fa fa-chart-line"></i>
-                                </span>
-
-                                <div class="info-box-content">
-                                    <span class="info-box-text">{{ $settings1['chart_title'] }}</span>
-                                    <span class="info-box-number">{{ number_format($settings1['total_number']) }}</span>
+                            <div class="card text-white bg-primary">
+                                <div class="card-body pb-0">
+                                    <div class="text-value">{{ number_format($settings1['total_number']) }}</div>
+                                    <div>{{ $settings1['chart_title'] }}</div>
+                                    <br />
                                 </div>
-                                <!-- /.info-box-content -->
                             </div>
-                            <!-- /.info-box -->
                         </div>
                         <div class="{{ $settings2['column_class'] }}">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-red" style="display:flex; flex-direction: column; justify-content: center;">
-                                    <i class="fa fa-chart-line"></i>
-                                </span>
-
-                                <div class="info-box-content">
-                                    <span class="info-box-text">{{ $settings2['chart_title'] }}</span>
-                                    <span class="info-box-number">{{ number_format($settings2['total_number']) }}</span>
+                            <div class="card text-white bg-primary">
+                                <div class="card-body pb-0">
+                                    <div class="text-value">{{ number_format($settings2['total_number']) }}</div>
+                                    <div>{{ $settings2['chart_title'] }}</div>
+                                    <br />
                                 </div>
-                                <!-- /.info-box-content -->
                             </div>
-                            <!-- /.info-box -->
                         </div>
                         {{-- Widget - latest entries --}}
                         <div class="{{ $settings3['column_class'] }}" style="overflow-x: auto;">

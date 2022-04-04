@@ -14,7 +14,9 @@
                 <div class="needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}" id="photo-dropzone">
                 </div>
                 @if($errors->has('photo'))
-                    <span class="text-danger">{{ $errors->first('photo') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('photo') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.slider.fields.photo_helper') }}</span>
             </div>
@@ -27,7 +29,9 @@
                     </div>
                 @endforeach
                 @if($errors->has('status'))
-                    <span class="text-danger">{{ $errors->first('status') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('status') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.slider.fields.status_helper') }}</span>
             </div>
@@ -35,7 +39,9 @@
                 <label for="description">{{ trans('cruds.slider.fields.description') }}</label>
                 <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description') }}</textarea>
                 @if($errors->has('description'))
-                    <span class="text-danger">{{ $errors->first('description') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('description') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.slider.fields.description_helper') }}</span>
             </div>
