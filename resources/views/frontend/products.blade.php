@@ -8,7 +8,13 @@
     <nav aria-label="breadcrumb" class="page-breadcrumb" style="--bs-breadcrumb-divider: '>';">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a  href="{{ route('frontend.home') }}">الرئيسية</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{$category->name }}</li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  @if(isset($category))
+                  {{$category->name }}
+                  @else 
+                  نتائج البحث
+                  @endif
+                  </li>
               </ol>
     </nav>
     </div>

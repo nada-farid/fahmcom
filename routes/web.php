@@ -116,6 +116,7 @@ Route::group([ 'as' => 'frontend.', 'namespace' => 'Frontend'], function () {
       Route::view('user_login', 'frontend.login')->name('login');
       Route::view('register', 'frontend.register')->name('register');
       Route::Post('user/add', 'HomeController@register')->name('register_store');
+      Route::get('search', 'ProductController@search')->name('search');
 
       
    

@@ -89,8 +89,9 @@
                           </ul>
                         <div class="navbar-icons">
                             <div class="search-container">
-                              <form action="/search" method="get">
-                                <input class="search" id="searchleft" type="search" name="q" placeholder="ابحث عن....">
+                              <form action="{{route('frontend.search') }}" method="get">
+                                @csrf
+                                <input class="search" id="searchleft" type="search" name="letters" placeholder="ابحث عن منتج....">
                                 <label class="button searchbutton" for="searchleft">                                
                                     <img src="{{asset('frontend/img/search-icon.png')}}">
                                   </label>

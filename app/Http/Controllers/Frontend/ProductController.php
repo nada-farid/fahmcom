@@ -28,4 +28,11 @@ class ProductController extends Controller
 
 
     }
+
+    public function search(Request $request){
+
+        $products=Product::where('name','like',"%".$request->letters."%")->OrWhere('description','like',"%".$request->letters."%")->paginate(12);
+          
+        return view('frontend.products',compact('products'));
+}
 }
