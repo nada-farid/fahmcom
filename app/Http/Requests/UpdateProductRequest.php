@@ -24,12 +24,8 @@ class UpdateProductRequest extends FormRequest
             'description' => [
                 'required',
             ],
-            'categories.*' => [
-                'integer',
-            ],
-            'categories' => [
-                'required',
-                'array',
+            'category_id' => [
+                'required',  
             ],
             'tags.*' => [
                 'integer',

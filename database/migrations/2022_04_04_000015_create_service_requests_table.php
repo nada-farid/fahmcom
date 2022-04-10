@@ -13,7 +13,7 @@ class CreateServiceRequestsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->longText('extra_info');
+            $table->longText('extra_info')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

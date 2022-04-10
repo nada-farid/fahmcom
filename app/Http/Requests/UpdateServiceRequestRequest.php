@@ -33,7 +33,7 @@ class UpdateServiceRequestRequest extends FormRequest
                 'integer',
             ],
             'extra_info' => [
-                'required',
+                'nullable',
             ],
         ];
     }

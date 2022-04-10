@@ -31,6 +31,7 @@ class Product extends Model implements HasMedia
     protected $fillable = [
         'name',
         'description',
+        'category_id',
         'buying_number',
         'created_at',
         'updated_at',
@@ -41,12 +42,14 @@ class Product extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
+        $this->addMediaConversion('preview2')->fit('crop', 441, 403);
     }
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(ProductCategory::class);
+        return $this->belongsTo(ProductCategory::class, 'category_id');
     }
+
 
     public function tags()
     {
@@ -60,6 +63,7 @@ class Product extends Model implements HasMedia
             $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
             $file->preview   = $file->getUrl('preview');
+            $file->preview2   = $file->getUrl('preview2');
         }
 
         return $file;

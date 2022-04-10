@@ -21,28 +21,9 @@ class StoreProductCartRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'name' => [
-                'string',
-                'required',
-            ],
-            'email' => [
-                'required',
-            ],
-            'phone' => [
-                'string',
-                'required',
-                'unique:product_carts',
-            ],
-            'city_id' => [
+            'user_id' => [
                 'required',
                 'integer',
-            ],
-            'address' => [
-                'string',
-                'required',
-            ],
-            'extra_info' => [
-                'required',
             ],
         ];
     }

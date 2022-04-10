@@ -24,12 +24,8 @@ class StoreProductRequest extends FormRequest
             'description' => [
                 'required',
             ],
-            'categories.*' => [
-                'integer',
-            ],
-            'categories' => [
+            'category_id' => [
                 'required',
-                'array',
             ],
             'tags.*' => [
                 'integer',

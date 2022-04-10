@@ -33,50 +33,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.productCart.fields.name') }}
+                            {{ trans('cruds.productCart.fields.user') }}
                         </th>
                         <td>
-                            {{ $productCart->name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.productCart.fields.email') }}
-                        </th>
-                        <td>
-                            {{ $productCart->email }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.productCart.fields.phone') }}
-                        </th>
-                        <td>
-                            {{ $productCart->phone }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.productCart.fields.city') }}
-                        </th>
-                        <td>
-                            {{ $productCart->city->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.productCart.fields.address') }}
-                        </th>
-                        <td>
-                            {{ $productCart->address }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.productCart.fields.extra_info') }}
-                        </th>
-                        <td>
-                            {{ $productCart->extra_info }}
+                            {{ $productCart->user->name ?? '' }}
                         </td>
                     </tr>
                 </tbody>

@@ -22,12 +22,7 @@ class ProductCart extends Model
 
     protected $fillable = [
         'product_id',
-        'name',
-        'email',
-        'phone',
-        'city_id',
-        'address',
-        'extra_info',
+        'user_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -38,9 +33,9 @@ class ProductCart extends Model
         return $this->belongsTo(Product::class, 'product_id');
     }
 
-    public function city()
+    public function user()
     {
-        return $this->belongsTo(City::class, 'city_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

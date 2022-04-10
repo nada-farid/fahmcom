@@ -22,7 +22,7 @@ class StoreOurServiceRequest extends FormRequest
                 'required',
             ],
             'type_id' => [
-                'required',
+                'nullable',
                 'integer',
             ],
             'description' => [

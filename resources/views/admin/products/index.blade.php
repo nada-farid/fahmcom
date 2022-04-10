@@ -141,7 +141,7 @@
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'description', name: 'description' },
-{ data: 'category', name: 'categories.name' },
+{ data: 'category_name', name: 'category.name' },
 { data: 'tag', name: 'tags.name' },
 { data: 'photo', name: 'photo', sortable: false, searchable: false },
 { data: 'buying_number', name: 'buying_number' },

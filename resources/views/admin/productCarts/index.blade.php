@@ -29,22 +29,7 @@
                             {{ trans('cruds.productCart.fields.product') }}
                         </th>
                         <th>
-                            {{ trans('cruds.productCart.fields.name') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.productCart.fields.email') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.productCart.fields.phone') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.productCart.fields.city') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.productCart.fields.address') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.productCart.fields.extra_info') }}
+                            {{ trans('cruds.productCart.fields.user') }}
                         </th>
                         <th>
                             &nbsp;
@@ -64,22 +49,7 @@
                                 {{ $productCart->product->name ?? '' }}
                             </td>
                             <td>
-                                {{ $productCart->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $productCart->email ?? '' }}
-                            </td>
-                            <td>
-                                {{ $productCart->phone ?? '' }}
-                            </td>
-                            <td>
-                                {{ $productCart->city->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $productCart->address ?? '' }}
-                            </td>
-                            <td>
-                                {{ $productCart->extra_info ?? '' }}
+                                {{ $productCart->user->name ?? '' }}
                             </td>
                             <td>
                                 @can('product_cart_show')

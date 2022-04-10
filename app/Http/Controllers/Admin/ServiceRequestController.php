@@ -8,6 +8,7 @@ use App\Http\Requests\StoreServiceRequestRequest;
 use App\Http\Requests\UpdateServiceRequestRequest;
 use App\Models\ServiceRequest;
 use App\Models\ServieceType;
+use App\Models\OurService;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,7 +28,9 @@ class ServiceRequestController extends Controller
     {
         abort_if(Gate::denies('service_request_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $services = ServieceType::pluck('type', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $type_id=ServieceType::where('type','خدمة العميل النهائي')->first()->id;
+
+        $services=OurService::where('type_id','!=',$type_id)->OrWhere('type_id',null)->pluck('name','id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.serviceRequests.create', compact('services'));
     }
@@ -43,7 +46,9 @@ class ServiceRequestController extends Controller
     {
         abort_if(Gate::denies('service_request_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $services = ServieceType::pluck('type', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $type_id=ServieceType::where('type','خدمة العميل النهائي')->first()->id;
+
+        $services=OurService::where('type_id','!=',$type_id)->OrWhere('type_id',null)->pluck('name','id')->prepend(trans('global.pleaseSelect'), '');
 
         $serviceRequest->load('service');
 

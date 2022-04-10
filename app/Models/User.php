@@ -40,6 +40,7 @@ class User extends Authenticatable
         'address',
         'city_id',
         'agree',
+        'user_type',
         'email_verified_at',
         'remember_token',
         'created_at',

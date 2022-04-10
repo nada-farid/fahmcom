@@ -9,10 +9,7 @@ use Illuminate\Http\Response;
 
 class StoreUserRequest extends FormRequest
 {
-    public function authorize()
-    {
-        return Gate::allows('user_create');
-    }
+  
 
     public function rules()
     {
@@ -28,6 +25,8 @@ class StoreUserRequest extends FormRequest
             'phone' => [
                 'string',
                 'required',
+                'size:10',
+                'regex:/(05)[0-9]{8}/', 
             ],
             'password' => [
                 'required',
@@ -43,13 +42,15 @@ class StoreUserRequest extends FormRequest
             'agree' => [
                 'required',
             ],
-            'roles.*' => [
-                'integer',
-            ],
-            'roles' => [
-                'required',
-                'array',
-            ],
+          
         ];
+    }  public function messages()
+    {
+    return [
+    'phone.required' => 'رقم الجوال مطلوب.',
+    'phone.regex' => '   رقم الجوال غير صالح يجب ان يبدأ 05',
+    'phone.size' => '  رقم الجوال يجب ان يكون 10 أرقام.',
+    'agree.required'=>'يجب الموافقة علي الشروط والأحكام',
+    ];
     }
 }

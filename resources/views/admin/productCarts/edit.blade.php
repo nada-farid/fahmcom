@@ -25,68 +25,18 @@
                 <span class="help-block">{{ trans('cruds.productCart.fields.product_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="name">{{ trans('cruds.productCart.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $productCart->name) }}" required>
-                @if($errors->has('name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.productCart.fields.name_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="email">{{ trans('cruds.productCart.fields.email') }}</label>
-                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email', $productCart->email) }}" required>
-                @if($errors->has('email'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('email') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.productCart.fields.email_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="phone">{{ trans('cruds.productCart.fields.phone') }}</label>
-                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $productCart->phone) }}" required>
-                @if($errors->has('phone'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('phone') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.productCart.fields.phone_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="city_id">{{ trans('cruds.productCart.fields.city') }}</label>
-                <select class="form-control select2 {{ $errors->has('city') ? 'is-invalid' : '' }}" name="city_id" id="city_id" required>
-                    @foreach($cities as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('city_id') ? old('city_id') : $productCart->city->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                <label class="required" for="user_id">{{ trans('cruds.productCart.fields.user') }}</label>
+                <select class="form-control select2 {{ $errors->has('user') ? 'is-invalid' : '' }}" name="user_id" id="user_id" required>
+                    @foreach($users as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('user_id') ? old('user_id') : $productCart->user->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('city'))
+                @if($errors->has('user'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('city') }}
+                        {{ $errors->first('user') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.productCart.fields.city_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="address">{{ trans('cruds.productCart.fields.address') }}</label>
-                <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address', $productCart->address) }}" required>
-                @if($errors->has('address'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('address') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.productCart.fields.address_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="extra_info">{{ trans('cruds.productCart.fields.extra_info') }}</label>
-                <textarea class="form-control {{ $errors->has('extra_info') ? 'is-invalid' : '' }}" name="extra_info" id="extra_info" required>{{ old('extra_info', $productCart->extra_info) }}</textarea>
-                @if($errors->has('extra_info'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('extra_info') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.productCart.fields.extra_info_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.productCart.fields.user_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

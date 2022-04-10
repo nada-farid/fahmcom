@@ -21,9 +21,9 @@ class SettingsController extends Controller
     {
         abort_if(Gate::denies('setting_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $settings = Setting::with(['media'])->get();
+        $setting = Setting::first();
 
-        return view('admin.settings.index', compact('settings'));
+        return view('admin.settings.edit', compact('setting'));
     }
 
     public function create()
@@ -53,6 +53,10 @@ class SettingsController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $setting->id]);
         }
 
+        if ($request->input('about_2_imag', false)) {
+            $setting->addMedia(storage_path('tmp/uploads/' . basename($request->input('about_2_imag'))))->toMediaCollection('about_2_imag');
+        }
+
         return redirect()->route('admin.settings.index');
     }
 
@@ -65,6 +69,7 @@ class SettingsController extends Controller
 
     public function update(UpdateSettingRequest $request, Setting $setting)
     {
+        $setting = Setting::first();
         $setting->update($request->all());
 
         if ($request->input('order_way', false)) {
@@ -98,6 +103,17 @@ class SettingsController extends Controller
             }
         } elseif ($setting->about_image) {
             $setting->about_image->delete();
+        }
+
+        if ($request->input('about_2_imag', false)) {
+            if (!$setting->about_2_imag || $request->input('about_2_imag') !== $setting->about_2_imag->file_name) {
+                if ($setting->about_2_imag) {
+                    $setting->about_2_imag->delete();
+                }
+                $setting->addMedia(storage_path('tmp/uploads/' . basename($request->input('about_2_imag'))))->toMediaCollection('about_2_imag');
+            }
+        } elseif ($setting->about_2_imag) {
+            $setting->about_2_imag->delete();
         }
 
         return redirect()->route('admin.settings.index');

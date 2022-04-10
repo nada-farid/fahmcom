@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyProductCartRequest;
 use App\Http\Requests\StoreProductCartRequest;
 use App\Http\Requests\UpdateProductCartRequest;
-use App\Models\City;
 use App\Models\Product;
 use App\Models\ProductCart;
 use Gate;
@@ -19,7 +18,7 @@ class ProductCartsController extends Controller
     {
         abort_if(Gate::denies('product_cart_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $productCarts = ProductCart::with(['product', 'city'])->get();
+        $productCarts = ProductCart::with(['product', 'user'])->get();
 
         return view('admin.productCarts.index', compact('productCarts'));
     }
@@ -30,9 +29,9 @@ class ProductCartsController extends Controller
 
         $products = Product::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $cities = City::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = Product::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.productCarts.create', compact('cities', 'products'));
+        return view('admin.productCarts.create', compact('products', 'users'));
     }
 
     public function store(StoreProductCartRequest $request)
@@ -48,11 +47,11 @@ class ProductCartsController extends Controller
 
         $products = Product::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $cities = City::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = Product::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $productCart->load('product', 'city');
+        $productCart->load('product', 'user');
 
-        return view('admin.productCarts.edit', compact('cities', 'productCart', 'products'));
+        return view('admin.productCarts.edit', compact('productCart', 'products', 'users'));
     }
 
     public function update(UpdateProductCartRequest $request, ProductCart $productCart)
@@ -66,7 +65,7 @@ class ProductCartsController extends Controller
     {
         abort_if(Gate::denies('product_cart_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $productCart->load('product', 'city');
+        $productCart->load('product', 'user');
 
         return view('admin.productCarts.show', compact('productCart'));
     }

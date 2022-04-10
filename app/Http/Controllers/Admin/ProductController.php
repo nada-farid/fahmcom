@@ -27,7 +27,7 @@ class ProductController extends Controller
         abort_if(Gate::denies('product_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Product::with(['categories', 'tags'])->select(sprintf('%s.*', (new Product())->table));
+            $query = Product::with(['category', 'tags'])->select(sprintf('%s.*', (new Product())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -57,14 +57,10 @@ class ProductController extends Controller
             $table->editColumn('description', function ($row) {
                 return $row->description ? $row->description : '';
             });
-            $table->editColumn('category', function ($row) {
-                $labels = [];
-                foreach ($row->categories as $category) {
-                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $category->name);
-                }
-
-                return implode(' ', $labels);
+            $table->addColumn('category_name', function ($row) {
+                return $row->category ? $row->category->name : '';
             });
+
             $table->editColumn('tag', function ($row) {
                 $labels = [];
                 foreach ($row->tags as $tag) {
@@ -103,7 +99,7 @@ class ProductController extends Controller
     {
         abort_if(Gate::denies('product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = ProductCategory::pluck('name', 'id');
+        $categories = ProductCategory::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $tags = ProductTag::pluck('name', 'id');
 
@@ -113,7 +109,6 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         $product = Product::create($request->all());
-        $product->categories()->sync($request->input('categories', []));
         $product->tags()->sync($request->input('tags', []));
         if ($request->input('photo', false)) {
             $product->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo');
@@ -130,11 +125,11 @@ class ProductController extends Controller
     {
         abort_if(Gate::denies('product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = ProductCategory::pluck('name', 'id');
+        $categories = ProductCategory::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $tags = ProductTag::pluck('name', 'id');
 
-        $product->load('categories', 'tags');
+        $product->load('category', 'tags');
 
         return view('admin.products.edit', compact('categories', 'product', 'tags'));
     }
@@ -142,7 +137,6 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         $product->update($request->all());
-        $product->categories()->sync($request->input('categories', []));
         $product->tags()->sync($request->input('tags', []));
         if ($request->input('photo', false)) {
             if (!$product->photo || $request->input('photo') !== $product->photo->file_name) {
@@ -162,7 +156,7 @@ class ProductController extends Controller
     {
         abort_if(Gate::denies('product_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $product->load('categories', 'tags');
+        $product->load('category', 'tags');
 
         return view('admin.products.show', compact('product'));
     }

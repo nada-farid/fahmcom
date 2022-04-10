@@ -22,7 +22,7 @@ class UpdateOurServiceRequest extends FormRequest
                 'required',
             ],
             'type_id' => [
-                'required',
+                'nullable',
                 'integer',
             ],
             'description' => [

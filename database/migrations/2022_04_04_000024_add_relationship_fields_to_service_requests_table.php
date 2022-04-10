@@ -10,7 +10,7 @@ class AddRelationshipFieldsToServiceRequestsTable extends Migration
     {
         Schema::table('service_requests', function (Blueprint $table) {
             $table->unsignedBigInteger('service_id')->nullable();
-            $table->foreign('service_id', 'service_fk_6337874')->references('id')->on('serviece_types');
+            $table->foreign('service_id', 'service_fk_6337874')->references('id')->on('our_services');
         });
     }
 }

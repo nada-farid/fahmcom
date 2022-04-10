@@ -61,7 +61,7 @@
                                 {{ $serviceRequest->phone ?? '' }}
                             </td>
                             <td>
-                                {{ $serviceRequest->service->type ?? '' }}
+                                {{ $serviceRequest->service->name ?? '' }}
                             </td>
                             <td>
                                 @can('service_request_show')

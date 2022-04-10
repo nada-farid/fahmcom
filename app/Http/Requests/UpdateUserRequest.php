@@ -9,10 +9,7 @@ use Illuminate\Http\Response;
 
 class UpdateUserRequest extends FormRequest
 {
-    public function authorize()
-    {
-        return Gate::allows('user_edit');
-    }
+
 
     public function rules()
     {
@@ -23,30 +20,22 @@ class UpdateUserRequest extends FormRequest
             ],
             'email' => [
                 'required',
-                'unique:users,email,' . request()->route('user')->id,
+                'unique:users,email,' . auth()->id(),
             ],
             'phone' => [
                 'string',
                 'required',
-            ],
-            'address' => [
-                'string',
-                'required',
-            ],
-            'city_id' => [
-                'required',
-                'integer',
-            ],
-            'agree' => [
-                'required',
-            ],
-            'roles.*' => [
-                'integer',
-            ],
-            'roles' => [
-                'required',
-                'array',
+                'size:10',
+                'regex:/(05)[0-9]{8}/', 
             ],
         ];
+    }  public function messages()
+    {
+    return [
+    'phone.required' => 'رقم الجوال مطلوب.',
+    'phone.regex' => '   رقم الجوال غير صالح يجب ان يبدأ 05',
+    'phone.size' => '  رقم الجوال يجب ان يكون 10 أرقام.',
+    'agree.required'=>'يجب الموافقة علي الشروط والأحكام',
+    ];
     }
 }

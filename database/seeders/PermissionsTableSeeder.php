@@ -264,46 +264,86 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 64,
-                'title' => 'product_cart_create',
-            ],
-            [
-                'id'    => 65,
-                'title' => 'product_cart_edit',
-            ],
-            [
-                'id'    => 66,
-                'title' => 'product_cart_show',
-            ],
-            [
-                'id'    => 67,
-                'title' => 'product_cart_delete',
-            ],
-            [
-                'id'    => 68,
-                'title' => 'product_cart_access',
-            ],
-            [
-                'id'    => 69,
                 'title' => 'service_request_create',
             ],
             [
-                'id'    => 70,
+                'id'    => 65,
                 'title' => 'service_request_edit',
             ],
             [
-                'id'    => 71,
+                'id'    => 66,
                 'title' => 'service_request_show',
             ],
             [
-                'id'    => 72,
+                'id'    => 67,
                 'title' => 'service_request_delete',
             ],
             [
-                'id'    => 73,
+                'id'    => 68,
                 'title' => 'service_request_access',
             ],
             [
+                'id'    => 69,
+                'title' => 'contactu_create',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'contactu_edit',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'contactu_show',
+            ],
+            [
+                'id'    => 72,
+                'title' => 'contactu_delete',
+            ],
+            [
+                'id'    => 73,
+                'title' => 'contactu_access',
+            ],
+            [
                 'id'    => 74,
+                'title' => 'product_cart_create',
+            ],
+            [
+                'id'    => 75,
+                'title' => 'product_cart_edit',
+            ],
+            [
+                'id'    => 76,
+                'title' => 'product_cart_show',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'product_cart_delete',
+            ],
+            [
+                'id'    => 78,
+                'title' => 'product_cart_access',
+            ],
+            [
+                'id'    => 79,
+                'title' => 'order_create',
+            ],
+            [
+                'id'    => 80,
+                'title' => 'order_edit',
+            ],
+            [
+                'id'    => 81,
+                'title' => 'order_show',
+            ],
+            [
+                'id'    => 82,
+                'title' => 'order_delete',
+            ],
+            [
+                'id'    => 83,
+                'title' => 'order_access',
+            ],
+            [
+                'id'    => 84,
                 'title' => 'profile_password_edit',
             ],
         ];

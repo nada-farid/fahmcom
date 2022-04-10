@@ -214,6 +214,17 @@
                 <span class="help-block">{{ trans('cruds.setting.fields.about_image_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="about_2_imag">{{ trans('cruds.setting.fields.about_2_imag') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('about_2_imag') ? 'is-invalid' : '' }}" id="about_2_imag-dropzone">
+                </div>
+                @if($errors->has('about_2_imag'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('about_2_imag') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.setting.fields.about_2_imag_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
@@ -368,6 +379,60 @@
       this.options.thumbnail.call(this, file, file.preview)
       file.previewElement.classList.add('dz-complete')
       $('form').append('<input type="hidden" name="about_image" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+    error: function (file, response) {
+        if ($.type(response) === 'string') {
+            var message = response //dropzone sends it's own error messages in string
+        } else {
+            var message = response.errors.file
+        }
+        file.previewElement.classList.add('dz-error')
+        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+        _results = []
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            node = _ref[_i]
+            _results.push(node.textContent = message)
+        }
+
+        return _results
+    }
+}
+</script>
+<script>
+    Dropzone.options.about2ImagDropzone = {
+    url: '{{ route('admin.settings.storeMedia') }}',
+    maxFilesize: 2, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2,
+      width: 752,
+      height: 537
+    },
+    success: function (file, response) {
+      $('form').find('input[name="about_2_imag"]').remove()
+      $('form').append('<input type="hidden" name="about_2_imag" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="about_2_imag"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($setting) && $setting->about_2_imag)
+      var file = {!! json_encode($setting->about_2_imag) !!}
+          this.options.addedfile.call(this, file)
+      this.options.thumbnail.call(this, file, file.preview)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="about_2_imag" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },

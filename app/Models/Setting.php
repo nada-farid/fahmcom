@@ -28,6 +28,7 @@ class Setting extends Model implements HasMedia
         'order_way',
         'footer_image',
         'about_image',
+        'about_2_imag',
     ];
 
     protected $fillable = [
@@ -57,6 +58,8 @@ class Setting extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
+        $this->addMediaConversion('about')->fit('crop', 413.383, 493.067);
+        $this->addMediaConversion('about2')->fit('crop',752,537);
     }
 
     public function getOrderWayAttribute()
@@ -86,6 +89,19 @@ class Setting extends Model implements HasMedia
     public function getAboutImageAttribute()
     {
         $file = $this->getMedia('about_image')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+            $file->about   = $file->getUrl('about');
+            $file->about2   = $file->getUrl('about2');
+        }
+
+        return $file;
+    }
+    public function getAbout2ImagAttribute()
+    {
+        $file = $this->getMedia('about_2_imag')->last();
         if ($file) {
             $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');

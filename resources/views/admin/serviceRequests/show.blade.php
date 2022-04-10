@@ -52,7 +52,7 @@
                             {{ trans('cruds.serviceRequest.fields.service') }}
                         </th>
                         <td>
-                            {{ $serviceRequest->service->type ?? '' }}
+                            {{ $serviceRequest->service->name ?? '' }}
                         </td>
                     </tr>
                     <tr>

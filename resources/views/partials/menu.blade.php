@@ -100,7 +100,7 @@
             </li>
         @endcan
         @can('product_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/product-categories*") ? "c-show" : "" }} {{ request()->is("admin/product-tags*") ? "c-show" : "" }} {{ request()->is("admin/products*") ? "c-show" : "" }} {{ request()->is("admin/product-carts*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/product-categories*") ? "c-show" : "" }} {{ request()->is("admin/product-tags*") ? "c-show" : "" }} {{ request()->is("admin/products*") ? "c-show" : "" }} {{ request()->is("admin/product-carts*") ? "c-show" : "" }} {{ request()->is("admin/orders*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-shopping-cart c-sidebar-nav-icon">
 
@@ -145,6 +145,16 @@
 
                                 </i>
                                 {{ trans('cruds.productCart.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('order_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/orders") || request()->is("admin/orders/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.order.title') }}
                             </a>
                         </li>
                     @endcan
@@ -200,6 +210,16 @@
 
                     </i>
                     {{ trans('cruds.serviceRequest.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('contactu_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.contactus.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/contactus") || request()->is("admin/contactus/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-toolbox c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.contactu.title') }}
                 </a>
             </li>
         @endcan

@@ -21,28 +21,9 @@ class UpdateProductCartRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'name' => [
-                'string',
-                'required',
-            ],
-            'email' => [
-                'required',
-            ],
-            'phone' => [
-                'string',
-                'required',
-                'unique:product_carts,phone,' . request()->route('product_cart')->id,
-            ],
-            'city_id' => [
+            'user_id' => [
                 'required',
                 'integer',
-            ],
-            'address' => [
-                'string',
-                'required',
-            ],
-            'extra_info' => [
-                'required',
             ],
         ];
     }

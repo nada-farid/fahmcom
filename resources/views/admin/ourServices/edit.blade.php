@@ -21,8 +21,8 @@
                 <span class="help-block">{{ trans('cruds.ourService.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="type_id">{{ trans('cruds.ourService.fields.type') }}</label>
-                <select class="form-control select2 {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type_id" id="type_id" required>
+                <label  for="type_id">{{ trans('cruds.ourService.fields.type') }}</label>
+                <select class="form-control select2 {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type_id" id="type_id" >
                     @foreach($types as $id => $entry)
                         <option value="{{ $id }}" {{ (old('type_id') ? old('type_id') : $ourService->type->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -81,8 +81,8 @@
     },
     params: {
       size: 2,
-      width: 90,
-      height: 90
+      width: 142,
+      height: 109
     },
     success: function (file, response) {
       $('form').find('input[name="icon"]').remove()

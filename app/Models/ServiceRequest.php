@@ -33,7 +33,7 @@ class ServiceRequest extends Model
 
     public function service()
     {
-        return $this->belongsTo(ServieceType::class, 'service_id');
+        return $this->belongsTo(OurService::class, 'service_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)
