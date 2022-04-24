@@ -154,10 +154,12 @@
 <div class="container">
         <div class="row">
              <h1 class="title title-center">
+                 @if($setting->order_way)
                     <img class="title-before" src="{{asset('frontend/img/titles-before-icon.png')}}">
                     آلية الطلب
             </h1>
             <img class="how-to-order-img" src="{{$setting->order_way->getUrl('') }}">
+            @endif
     </div>
 </div>
 </div>
