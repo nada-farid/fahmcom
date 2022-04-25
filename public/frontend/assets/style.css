@@ -866,6 +866,10 @@ body,html {
    a.btn.req-service-btn.blue-btn:hover{
            background-color: #161616;
    }
+   .add-to-cart-btn button {
+       background-color: transparent;
+       border: 0;
+   }
    .service-wrap2 {
        width: 95%;
        display: flex;
