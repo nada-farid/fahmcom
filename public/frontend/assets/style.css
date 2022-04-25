@@ -1413,6 +1413,11 @@ body,html {
        font-size: 20px;
        margin: 0;
    }
+   button.add-cart-p {
+       background-color: transparent;
+       border: 0;
+       color: #fff;
+   }
    i.fa-solid.fa-x.delete-from-cart-btn {
    /*    width: 100%;*/
        width: 60px;
