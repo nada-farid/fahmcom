@@ -71,6 +71,7 @@
                                   <i class="fa-solid fa-cart-plus basket-add"></i>
                                     <button type="submit" class="add-cart-p">اضف المنتج</button>
                                     </a>
+                                    </form>
                                 </div>
                             </div>
                         </div>
